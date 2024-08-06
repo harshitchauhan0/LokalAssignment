@@ -1,6 +1,9 @@
 package com.harshit.lokalassignment.data.models
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Jobs(
     @SerializedName("advertiser")
     val advertiser: Int,
@@ -48,7 +51,7 @@ data class Jobs(
     val fbShares: Int,
 
     @SerializedName("fee_details")
-    val feeDetails: FeeDetails,
+    val feeDetails: FeeDetails? = null,
 
     @SerializedName("fees_charged")
     val feesCharged: Int,
@@ -56,8 +59,9 @@ data class Jobs(
     @SerializedName("fees_text")
     val feesText: String,
 
+    @PrimaryKey
     @SerializedName("id")
-    val id: Int,
+    val id: Int? = null,
 
     @SerializedName("is_applied")
     val isApplied: Boolean,
@@ -117,22 +121,16 @@ data class Jobs(
     val premiumTill: String,
 
     @SerializedName("primary_details")
-    val primaryDetails: PrimaryDetails,
+    val primaryDetails: PrimaryDetails? = null,
 
     @SerializedName("qualification")
     val qualification: Int,
-
-    @SerializedName("question_bank_id")
-    val questionBankId: Any,
 
     @SerializedName("salary_max")
     val salaryMax: Int,
 
     @SerializedName("salary_min")
     val salaryMin: Int,
-
-    @SerializedName("screening_retry")
-    val screeningRetry: Any,
 
     @SerializedName("shares")
     val shares: Int,
@@ -146,9 +144,6 @@ data class Jobs(
     @SerializedName("status")
     val status: Int,
 
-    @SerializedName("tags")
-    val tags: List<Any>,
-
     @SerializedName("title")
     val title: String,
 
@@ -157,9 +152,6 @@ data class Jobs(
 
     @SerializedName("updated_on")
     val updatedOn: String,
-
-    @SerializedName("videos")
-    val videos: List<Any>,
 
     @SerializedName("views")
     val views: Int,

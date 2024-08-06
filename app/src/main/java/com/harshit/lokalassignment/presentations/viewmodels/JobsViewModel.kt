@@ -1,25 +1,18 @@
 package com.harshit.lokalassignment.presentations.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harshit.lokalassignment.data.models.JobList
+import com.harshit.lokalassignment.data.models.Result
 import com.harshit.lokalassignment.data.remote.JobsRepository
+import com.harshit.lokalassignment.utils.Event
+import com.harshit.lokalassignment.utils.SnackarEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.harshit.lokalassignment.data.models.Result
-import com.harshit.lokalassignment.utils.Event
-import com.harshit.lokalassignment.utils.SnackarEvent
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import retrofit2.HttpException
-import java.io.IOException
 
 @HiltViewModel
 class JobsViewModel @Inject constructor(private val repository: JobsRepository) : ViewModel() {
@@ -33,15 +26,12 @@ class JobsViewModel @Inject constructor(private val repository: JobsRepository) 
     val isLoading: LiveData<Boolean> = _isLoading
 
     private fun getJobList(page: Int = 1) {
-        _isLoading.value = true
         viewModelScope.launch {
             repository.getJobList(page).collectLatest{ result ->
                 when(result){
                     is Result.Success -> {
                         _isLoading.value = false
-                        val list = result.data
-                        _jobList.value = list
-                        _snackbarMessage.postValue(Event(SnackarEvent.Success("Job list loaded successfully")))
+                        _jobList.value = result.data
                     }
                     is Result.Error -> {
                         _isLoading.value = false
@@ -59,5 +49,4 @@ class JobsViewModel @Inject constructor(private val repository: JobsRepository) 
     init {
         getJobList()
     }
-
 }
