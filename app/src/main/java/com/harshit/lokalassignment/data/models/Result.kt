@@ -1,6 +1,7 @@
 package com.harshit.lokalassignment.data.models
 
-sealed class Result<out R> {
-    data class Success<out T>(val data: T) : Result<T>()
-    data class Error(val message: String?) : Result<Nothing>()
+sealed class Result<T>(val data: T? = null, val message: String? = null) {
+    class Success<T>(data: T?) : Result<T>(data)
+    class Error<T>(message: String, data: T? = null) : Result<T>(data, message)
+    class Loading<T>(data: T? = null) : Result<T>(data)
 }

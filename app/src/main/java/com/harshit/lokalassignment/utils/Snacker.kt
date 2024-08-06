@@ -5,7 +5,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.harshit.lokalassignment.R
 
-class Snackar(val view : View, val text : String) {
+class Snacker(private val view : View, private val text : String) {
     fun success(){
         return Snackbar.make(view,text, Snackbar.LENGTH_SHORT)
             .setBackgroundTint(ContextCompat.getColor(view.context, R.color.colorSuccess))
