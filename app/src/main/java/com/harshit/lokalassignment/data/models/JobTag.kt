@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class JobTag(
     @SerializedName("bg_color")
-    val bgColor: String,
+    val bgColor: String? = null,
 
     @SerializedName("text_color")
-    val textColor: String,
+    val textColor: String? = null,
 
     @SerializedName("value")
-    val value: String
+    val value: String? = null
 )

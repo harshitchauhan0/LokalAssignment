@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="jobDetail"
+            type="com.harshit.lokalassignment.data.models.Jobs" />
+    </data>
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="6dp"
+        app:cardBackgroundColor="@color/editbg"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/editbg"
+            android:orientation="horizontal"
+            android:padding="2dp">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="9dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/Title"
+                        style="@style/common_title_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.3"
+                        android:text="@{jobDetail.title}"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/salary"
+                        style="@style/common_title_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:maxLines="3"
+                        android:text="@{jobDetail.primaryDetails.salary}"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/job_loc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.25"
+                        android:fontFamily="sans-serif"
+                        android:text="@{jobDetail.jobLocationSlug}"
+                        android:textColor="@color/lightpurple" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.75"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:text="@{jobDetail.whatsappNo}"
+                        android:textColor="@color/lightpurple" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/viewMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:clickable="true"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/view_more"
+                    android:textColor="@color/lightpurple" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</layout>

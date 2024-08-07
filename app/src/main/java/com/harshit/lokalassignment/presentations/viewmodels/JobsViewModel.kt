@@ -32,6 +32,7 @@ class JobsViewModel @Inject constructor(private val repository: JobsRepository) 
                     is Result.Success -> {
                         _isLoading.value = false
                         _jobList.value = result.data
+                        _snackbarMessage.postValue(Event(SnackarEvent.Success("Job List Fetched!")))
                     }
                     is Result.Error -> {
                         _isLoading.value = false

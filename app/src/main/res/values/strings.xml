@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">LokalAssignment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="jobs">Jobs</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="view_more">View More</string>
+    <string name="error_message">There might be some issue with the internet or server.</string>
+    <string name="bookmarked_error_message">There are some internal issue with the database. Try again later!</string>
+    <string name="bookmarked_empty_message">You have not bookmarked any jobs yet.</string>
+    <string name="error_icon_description">Error Icon</string>
+    <string name="empty_message">There are no jobs available right now.</string>
+
+
+<!--    SnackBar Messages -->
+    <string name="snackbar_success_message">Job List Fetched!</string>"
+    <string name="snackbar_error_message">Something went wrong</string>
+    <string name="loading_message">Loading...</string>
+    <string name="tv_salary">Salary</string>
+    <string name="tv_year">Graduation year</string>
+    <string name="tv_education">Education</string>
+    <string name="tv_workplace">Workplace</string>
+    <string name="tv_jobloc">Job Location</string>
+    <string name="tv_jobtype">\u2022 Job Type</string>
+    <string name="tv_location">\u2022 Location</string>
+    <string name="tv_experience">\u2022 Experience</string>
+    <string name="tv_posted">\u2022 Posted</string>
+    <string name="tv_application">\u2022 Application</string>
+    <string name="add_to_bookmark">Add to BookMark</string>
+    <string name="remove_from_bookmark">Remove From BookMark</string>
+    <string name="tv_amount">\u2022 Amount</string>
+    <string name="whatsapp_label">\u2022 Whatsapp No.</string>
+    <string name="views_label">\u2022 Views</string>
+    <string name="shares_label">\u2022 Shares</string>
+    <string name="min_salry_label">\u2022 Min Salary</string>
+    <string name="max_salry_label">\u2022 Max Salary</string>
+    <string name="not_defined">Not Defined</string>
+    <string name="tv_job_hours">\u2022 Job Hours</string>
+
 </resources>

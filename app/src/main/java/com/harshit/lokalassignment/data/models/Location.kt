@@ -3,11 +3,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Location(
     @SerializedName("id")
-    val id: Int,
+    val id: Int? = null,
 
     @SerializedName("locale")
-    val locale: String,
+    val locale: String? = null,
 
     @SerializedName("state")
-    val state: Int
+    val state: Int? = null
 )

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="common_title_text_style">
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginEnd">3dp</item>
+        <item name="android:textColor">@color/bgBlueColor</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="common_tv_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/txtgrey</item>
+        <!-- <item name="android:layout_margin">4dp</item> -->
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:paddingEnd">3dp</item>
+        <item name="android:paddingStart">3dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="common_submit_btn_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+</resources>

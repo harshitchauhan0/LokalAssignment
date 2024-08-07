@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="jobdetail"
+            type="com.harshit.lokalassignment.data.models.Jobs" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.JobPostPreviewFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+            android:background="@color/editbg"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fitsSystemWindows="true"
+                android:paddingBottom="1dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llMain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:padding="2dp">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight=".9"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/canTitle"
+                                    style="@style/common_title_text_style"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{jobdetail.jobRole}"
+                                    android:textSize="15sp" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/canWorkspace"
+                                    style="@style/common_tv_text_style"
+                                    android:layout_gravity="left"
+                                    android:layout_margin="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:text="@{jobdetail.companyName}"
+                                    android:textColor="@color/txtcolor"
+                                    android:textSize="13sp" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/can_job_loc"
+                                    style="@style/common_tv_text_style"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_margin="0dp"
+                                    android:fontFamily="sans-serif"
+                                    android:paddingTop="0dp"
+                                    android:text="@{`\u2022 Openings ` + jobdetail.openingsCount}"
+                                    android:textColor="@color/lightpurple"
+                                    android:textSize="12sp" />
+
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/can_timing"
+                                    style="@style/common_tv_text_style"
+                                    android:layout_margin="0dp"
+                                    android:fontFamily="sans-serif"
+                                    android:text="@{`\u2022 Role Id ` + jobdetail.jobRoleId}"
+                                    android:textColor="@color/lightpurple"
+                                    android:textSize="11sp" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/addJobToBookMark"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+
+                                        android:padding="2dp">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:contentDescription="@string/add_to_bookmark"
+                                            android:src="@drawable/ic_bookmark"
+                                            app:tint="@color/bgPinkColor" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/removeFromBookMark"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:padding="2dp">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:contentDescription="@string/remove_from_bookmark"
+                                            android:src="@drawable/ic_bookmark_remove"
+                                            app:tint="@color/bgPinkColor" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/bgBlueColor"
+                                    android:text="Contact"
+                                    android:id="@+id/contact"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/bgPinkColor" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Role"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/role"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{jobdetail.title}"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Qualifications"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/skills"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{jobdetail.primaryDetails.qualification}"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Job Description"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/job_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{jobdetail.contentV3.v3[3].fieldValue}"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:text="Expire On"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/job_expire"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{jobdetail.expireOn.substring(0,10)}"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="12sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="1"
+                            android:text="Details"
+                            android:textColor="@color/bgBlueColor"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_jobType"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_jobtype"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_jobType2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.jobCategory}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_location"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_location"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_location2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.jobLocationSlug}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_experience"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_experience"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_experience2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.primaryDetails.experience}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_whatsapp_label"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/whatsapp_label"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_whatsapp_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.whatsappNo.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_job_hours"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_job_hours"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_job_hours2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.jobHours.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_posted"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_posted"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_posted2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.createdOn.substring(0,10)}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_application"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_application"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_application2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.numApplications.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_amount"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/tv_amount"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_amount2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.amount.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_gender"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@{`\u2022 ` + jobdetail.contentV3.v3[1].fieldKey.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_gender2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.contentV3.v3[1].fieldValue.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_shift_timing"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@{`\u2022 ` + jobdetail.contentV3.v3[2].fieldKey.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_shift_timing2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.contentV3.v3[2].fieldValue.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_other_details"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@{`\u2022 ` + jobdetail.contentV3.v3[3].fieldKey.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_other_details2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.contentV3.v3[3].fieldValue.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_views_label"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/views_label"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_views_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.views.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_shares_label"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/shares_label"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_shares_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.shares.toString()}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_min_salry_label"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/min_salry_label"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_min_salary"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.salaryMin != null ? jobdetail.salaryMin.toString() : @string/not_defined}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_max_salry_label"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".8"
+                                android:text="@string/max_salry_label"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_max_salary"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{jobdetail.salaryMax != null ? jobdetail.salaryMax.toString() : @string/not_defined}"
+                                android:textColor="@color/bgBlueColor"
+                                android:textSize="12sp" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.core.widget.NestedScrollView>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

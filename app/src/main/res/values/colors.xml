@@ -7,4 +7,11 @@
     <color name="colorSuccess">#4caf50</color>
     <color name="colorError">#d32f2f</color>
     <color name="colorWarning">#ff9800</color>
+
+    <color name="bgBlueColor">#3C1B82</color>
+    <color name="bgPinkColor">#CD3581</color>
+    <color name="editbg">#F2F7F7F8</color>
+    <color name="lightpurple">#766B8E</color>
+    <color name="txtcolor">#421287</color>
+    <color name="txtgrey">#A69FB0</color>
 </resources>

@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.harshit.lokalassignment.data.local.BookMarkDB
 import com.harshit.lokalassignment.data.local.Convertors
 import com.harshit.lokalassignment.data.local.repositories.BookMarkRepository
+import com.harshit.lokalassignment.data.local.repositories.JobDetailRepository
 import com.harshit.lokalassignment.data.local.util.GsonParser
 import com.harshit.lokalassignment.data.remote.JobsApi
 import com.harshit.lokalassignment.data.remote.JobsRepository
@@ -63,5 +64,11 @@ object AppModule {
     @Provides
     fun provideBookMarkRepository(db: BookMarkDB): BookMarkRepository {
         return BookMarkRepository(dao = db.dao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideJobDetailRepository(db: BookMarkDB): JobDetailRepository {
+        return JobDetailRepository(dao = db.dao)
     }
 }
