@@ -25,19 +25,38 @@ class JobsViewModel @Inject constructor(private val repository: JobsRepository) 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private fun getJobList(page: Int = 1) {
+    private var currentPage = 1
+    private var isLastPage = false
+
+    private fun getJobList(page: Int) {
         viewModelScope.launch {
-            repository.getJobList(page).collectLatest{ result ->
-                when(result){
+            repository.getJobList(page).collectLatest { result ->
+                when (result) {
                     is Result.Success -> {
                         _isLoading.value = false
-                        _jobList.value = result.data
+                        if (page == 1) {
+                            _jobList.value = result.data
+                        } else {
+                            val lastList = _jobList.value ?: JobList(emptyList())
+                            val newJobs = result.data?.jobs ?: emptyList()
+                            val updatedList = lastList.jobs?.plus(newJobs)
+                            _jobList.value = JobList(updatedList)
+                        }
                         _snackbarMessage.postValue(Event(SnackarEvent.Success("Job List Fetched!")))
+                        isLastPage = result.data?.jobs?.isEmpty() ?: false
                     }
+
                     is Result.Error -> {
                         _isLoading.value = false
-                        _snackbarMessage.postValue(Event(SnackarEvent.Error(result.message?:"Something went wrong")))
+                        _snackbarMessage.postValue(
+                            Event(
+                                SnackarEvent.Error(
+                                    result.message ?: "Something went wrong"
+                                )
+                            )
+                        )
                     }
+
                     is Result.Loading -> {
                         _isLoading.value = true
                         _snackbarMessage.postValue(Event(SnackarEvent.Loading("Loading...")))
@@ -47,7 +66,15 @@ class JobsViewModel @Inject constructor(private val repository: JobsRepository) 
         }
     }
 
+    fun loadNextPage() {
+        if (!isLastPage && !isLoading.value!!) {
+            currentPage++
+            getJobList(currentPage)
+        }
+    }
+
     init {
-        getJobList()
+        getJobList(currentPage)
     }
 }
+

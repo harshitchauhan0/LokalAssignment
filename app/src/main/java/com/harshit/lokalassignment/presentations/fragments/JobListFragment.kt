@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.harshit.lokalassignment.databinding.FragmentJobListBinding
 import com.harshit.lokalassignment.presentations.adapters.JobListAdapter
@@ -16,12 +17,12 @@ import com.harshit.lokalassignment.utils.SnackarEvent
 import com.harshit.lokalassignment.utils.Snacker
 
 
-
 class JobListFragment : Fragment() {
     private lateinit var jobListViewModel: JobsViewModel
     private val adapter = JobListAdapter()
     private var _binding: FragmentJobListBinding? = null
     private val binding get() = _binding!!
+    private var isLoading = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +46,7 @@ class JobListFragment : Fragment() {
 
     private fun initViews() {
         binding.jobsRecyclerView.adapter = adapter
+        binding.jobsRecyclerView.setHasFixedSize(true)
         binding.jobsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter.onItemClick = { job ->
             val fragment = JobDetailFragment()
@@ -54,12 +56,28 @@ class JobListFragment : Fragment() {
             fragment.arguments = bundle
             fragment.show(requireActivity().supportFragmentManager, fragment.tag)
         }
+
+        binding.jobsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val visibleItemCount =
+                    (recyclerView.layoutManager as LinearLayoutManager).childCount
+                val totalItemCount = (recyclerView.layoutManager as LinearLayoutManager).itemCount
+                val firstVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+
+                if (!isLoading && (visibleItemCount + firstVisibleItemPosition) >= totalItemCount) {
+                    jobListViewModel.loadNextPage()
+                }
+            }
+        })
     }
 
     private fun initObservers() {
         jobListViewModel.jobList.observe(viewLifecycleOwner) { jobs ->
             val list = jobs?.jobs?.filter { it.id != null }
-            binding.jobsEmptyMessage.visibility = if (list.isNullOrEmpty()) View.VISIBLE else View.GONE
+            binding.jobsEmptyMessage.visibility =
+                if (list.isNullOrEmpty()) View.VISIBLE else View.GONE
             adapter.submitList(list)
         }
 
@@ -71,9 +89,11 @@ class JobListFragment : Fragment() {
                         binding.errorView.visibility = View.VISIBLE
                         snacker.error()
                     }
+
                     is SnackarEvent.Loading -> {
                         // Handle loading state if necessary
                     }
+
                     is SnackarEvent.Success -> {
                         snacker.success()
                     }
@@ -82,6 +102,7 @@ class JobListFragment : Fragment() {
         }
 
         jobListViewModel.isLoading.observe(viewLifecycleOwner) {
+            isLoading = it
             binding.jobsProgressBar.visibility = if (it) View.VISIBLE else View.GONE
         }
     }
